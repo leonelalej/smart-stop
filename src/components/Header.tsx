@@ -26,12 +26,12 @@ export default function Header() {
         {/* ─── Brand row ─────────────────────────────────────────── */}
         <div className="flex items-center justify-between gap-3 py-3">
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="flex items-center gap-2 min-h-[48px] py-1"
             aria-label="Smart Stop inicio"
           >
             <img
-              src="/smart-stop-logo.png"
+              src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/smart-stop-logo.png`}
               alt="Smart Stop"
               width={40}
               height={40}

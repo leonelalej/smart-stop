@@ -4,8 +4,9 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  // Site URL — replace with the real production domain when deploying.
-  site: 'https://smartstopmcbo.vercel.app',
+  // Site URL and base path (supports GitHub Pages via env vars or Vercel default)
+  site: process.env.ASTRO_SITE || 'https://smartstopmcbo.vercel.app',
+  base: process.env.ASTRO_BASE || undefined,
 
   // Astro Island Architecture: components ship zero JS unless hydrated
   // explicitly via `client:load`, `client:visible`, `client:idle`, etc.

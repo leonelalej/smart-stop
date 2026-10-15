@@ -7,6 +7,8 @@ import CartDrawer from '@/components/CartDrawer';
 import BottomNav from '@/components/BottomNav';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import { STORE_INFO } from '@/data/products';
+
+const logoUrl = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/smart-stop-logo.png`;
 ---
 
 <Layout>
@@ -62,7 +64,7 @@ import { STORE_INFO } from '@/data/products';
       {/* Footer / contact strip */}
       <footer class="mt-12 pt-6 border-t border-chrome-100 text-center">
         <img
-          src="/smart-stop-logo.png"
+          src={logoUrl}
           alt="Smart Stop"
           width={56}
           height={56}

@@ -11,6 +11,9 @@ const {
   title = 'Smart Stop — Accesorios tech en Maracaibo',
   description = `${STORE_INFO.name} (@smartstopmcbo) — fundas, cargadores, cables, vidrios templados, audio y repuestos. Delivery en Maracaibo, envíos a toda Venezuela.`,
 } = Astro.props;
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+const logoUrl = `${baseUrl}/smart-stop-logo.png`;
 ---
 
 <!doctype html>
@@ -34,12 +37,12 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="es_VE" />
-    <meta property="og:image" content="/smart-stop-logo.png" />
+    <meta property="og:image" content={logoUrl} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/smart-stop-logo.png" />
-    <link rel="apple-touch-icon" href="/smart-stop-logo.png" />
+    <link rel="icon" type="image/png" href={logoUrl} />
+    <link rel="apple-touch-icon" href={logoUrl} />
 
     <!-- Preconnect to image host for faster catalog loads on 3G -->
     <link rel="preconnect" href="https://images.unsplash.com" />
