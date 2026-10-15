@@ -1,0 +1,75 @@
+---
+import '@/styles/global.css';
+import { STORE_INFO } from '@/data/products';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Smart Stop — Accesorios tech en Maracaibo',
+  description = `${STORE_INFO.name} (@smartstopmcbo) — fundas, cargadores, cables, vidrios templados, audio y repuestos. Delivery en Maracaibo, envíos a toda Venezuela.`,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#7F1D1D" />
+
+    <!-- Mobile web app capability -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Smart Stop" />
+
+    <!-- Open Graph (for Instagram bio link previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Smart Stop" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_VE" />
+    <meta property="og:image" content="/smart-stop-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/smart-stop-logo.png" />
+    <link rel="apple-touch-icon" href="/smart-stop-logo.png" />
+
+    <!-- Preconnect to image host for faster catalog loads on 3G -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Fonts: Inter (body) + Sora (display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Viewport height tracking — keeps --app-height in sync when the
+         Instagram in-app address bar shows/hides. -->
+    <script is:inline>
+      (function () {
+        const setHeight = () => {
+          const h = window.innerHeight * 0.01;
+          document.documentElement.style.setProperty('--app-height', `${h}vh`);
+        };
+        setHeight();
+        window.addEventListener('resize', setHeight, { passive: true });
+        window.addEventListener('orientationchange', setHeight, { passive: true });
+      })();
+    </script>
+
+    <slot />
+  </body>
+</html>

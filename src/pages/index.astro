@@ -1,0 +1,101 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header';
+import HeroCarousel from '@/components/HeroCarousel';
+import ProductGrid from '@/components/ProductGrid';
+import CartDrawer from '@/components/CartDrawer';
+import BottomNav from '@/components/BottomNav';
+import WhatsAppFloat from '@/components/WhatsAppFloat';
+import { STORE_INFO } from '@/data/products';
+---
+
+<Layout>
+  <div id="top" class="min-h-dvh">
+    {/* ── Sticky header with logo, status, search, category pills ── */}
+    <Header client:load />
+
+    {/* ── Promo carousel (auto-advancing, lazy-hydrated) ── */}
+    <HeroCarousel client:visible />
+
+    {/* ── Catalog: trust strip + product grid ── */}
+    <main class="mx-auto max-w-screen-desktop px-4 pt-5 pb-12">
+      {/* Trust strip */}
+      <section
+        aria-label="Por qué comprar en Smart Stop"
+        class="grid grid-cols-3 gap-2 mb-5 text-center"
+      >
+        <div class="bg-white rounded-xl p-2.5 border border-chrome-100 shadow-sm">
+          <div class="text-brand-700 font-bold text-base sm:text-lg">$0</div>
+          <div class="text-[10px] sm:text-[11px] text-chrome-500 font-medium leading-tight">
+            Envío Maracaibo
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-2.5 border border-chrome-100 shadow-sm">
+          <div class="text-brand-700 font-bold text-base sm:text-lg">24h</div>
+          <div class="text-[10px] sm:text-[11px] text-chrome-500 font-medium leading-tight">
+            Despacho rápido
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-2.5 border border-chrome-100 shadow-sm">
+          <div class="text-brand-700 font-bold text-base sm:text-lg">100%</div>
+          <div class="text-[10px] sm:text-[11px] text-chrome-500 font-medium leading-tight">
+            Garantía real
+          </div>
+        </div>
+      </section>
+
+      {/* Section heading */}
+      <div id="catalogo" class="flex items-end justify-between mb-3 scroll-mt-44">
+        <div>
+          <h1 class="font-display font-extrabold text-xl sm:text-2xl text-chrome-900">
+            Catálogo
+          </h1>
+          <p class="text-xs sm:text-sm text-chrome-500">
+            Fundas, cargadores, audio y repuestos en Maracaibo.
+          </p>
+        </div>
+      </div>
+
+      {/* Product grid — the main interactive island */}
+      <ProductGrid client:load />
+
+      {/* Footer / contact strip */}
+      <footer class="mt-12 pt-6 border-t border-chrome-100 text-center">
+        <img
+          src="/smart-stop-logo.png"
+          alt="Smart Stop"
+          width={56}
+          height={56}
+          class="mx-auto h-14 w-14 rounded-xl object-cover shadow-sm ring-1 ring-chrome-200"
+          loading="lazy"
+        />
+        <p class="mt-3 font-display font-bold text-chrome-900">
+          {STORE_INFO.name}
+        </p>
+        <p class="text-xs text-chrome-500">
+          {STORE_INFO.handle} · {STORE_INFO.city}
+        </p>
+        <p class="text-xs text-chrome-500 mt-1">
+          {STORE_INFO.hours} · {STORE_INFO.delivery}
+        </p>
+        <a
+          href={STORE_INFO.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-brand-700 hover:text-brand-900"
+        >
+          Ver Instagram
+        </a>
+      </footer>
+    </main>
+
+    {/* ── Floating WhatsApp (tablet/desktop only) ── */}
+    <WhatsAppFloat client:visible />
+
+    {/* ── Sticky bottom dock (mobile-first) ── */}
+    <BottomNav client:load />
+
+    {/* ── Slide-over cart drawer ── */}
+    <CartDrawer client:load />
+  </div>
+</Layout>
